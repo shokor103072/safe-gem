@@ -1,0 +1,287 @@
+================================================================================
+FULL EXPLANATION TEXTS — VOCABULARY CALIBRATION
+Read these carefully. Any phrase that SHOULD be caught
+but isn't in the vocabulary → add it to claim_extractor.py
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+SAMPLE: FORGE_E_0000  (CLEAR EVENT — correct prediction)
+GT=1  Pred=1  Conf=1.000  CORRECT
+────────────────────────────────────────────────────────────────────────────────
+
+SYMBOLIC EVIDENCE:
+  SNR level         : high
+  Amplitude contrast: strong
+  Frequency band    : high
+  High-freq content : strong
+  Onset character   : moderate
+  DAS coherence     : incoherent
+  Event support     : strong
+  Signal ambiguity  : moderate
+  Multimodal        : agreement
+
+  [P1_raw]
+  EIRRS=0.056  Risk=LOW  SGS=1.000  Claims=4
+
+  FULL EXPLANATION TEXT:
+  The AI model likely detected a Microseismic Event based on distinct seismic signal characteristics such as unique frequency patterns and temporal occurrences that match known signatures of microseisms. The high confidence score of 1.00 suggests that the model identified these signals with very high certainty, aligning closely with its training data on microseismic events.
+
+  EXTRACTED CLAIMS:
+    ? [uncertainty/positive] "likely" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ? [uncertainty/positive] "suggests" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+
+  [P2_grounded]
+  EIRRS=0.111  Risk=LOW  SGS=1.000  Claims=7
+
+  FULL EXPLANATION TEXT:
+  The AI model has predicted a microseismic event with high confidence (1.00), indicating that the detected signal is highly reliable. The extracted features suggest a strong amplitude contrast and high-frequency energy, along with moderate onset and signal ambiguity, which collectively support the presence of a significant seismic activity. The incoherent DAS coherence and multimodal agreement further reinforce this prediction, despite some inherent uncertainty indicated by the moderate ambiguity.
+
+  EXTRACTED CLAIMS:
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ? [uncertainty/negative] "with high confidence" → unavailable
+    ✓ [amplitude/positive] "strong amplitude" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ✓ [das_coherence/negative] "incoherent das" → supported
+    ✓ [multimodal_agreement/positive] "multimodal agreement" → supported
+    ? [uncertainty/positive] "uncertain" → unavailable
+
+  [P3_uncertainty]
+  EIRRS=0.056  Risk=LOW  SGS=1.000  Claims=10
+
+  FULL EXPLANATION TEXT:
+  The AI model's prediction of a microseismic event with a confidence level of 1.00 indicates that the signal characteristics are highly indicative of such an event; however, it is important to note that while the high Signal-to-Noise Ratio (SNR), strong high-frequency energy, and strong amplitude contrast suggest a clear seismic signature, the incoherent DAS coherence could potentially indicate other sources of noise or interference. Therefore, while this result strongly suggests a microseismic event, further verification through additional data analysis or on-site inspection may be necessary to rule out alternative interpretations such as surface vibrations or other geological activities.
+
+  EXTRACTED CLAIMS:
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ? [uncertainty/positive] "indicative of" → unavailable
+    ✓ [snr/positive] "high signal-to-noise ratio" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ✓ [amplitude/positive] "strong amplitude" → supported
+    ✓ [das_coherence/negative] "incoherent das" → supported
+    ? [uncertainty/positive] "potential" → unavailable
+    ? [uncertainty/positive] "suggests" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ? [uncertainty/positive] "may be" → unavailable
+
+  [P4_constrained]
+  EIRRS=0.056  Risk=LOW  SGS=1.000  Claims=6
+
+  FULL EXPLANATION TEXT:
+  Based on the high signal-to-noise ratio (SNR) and the presence of strong high-frequency energy, along with a clear onset and strong amplitude contrast, the AI model is highly confident that a microseismic event has occurred. The strong event support and agreement from multimodal data further reinforce this prediction. However, it's important to note that while DAS coherence is incoherent, which could introduce some uncertainty, the overall evidence strongly supports the detection of a microseismic event.
+
+  EXTRACTED CLAIMS:
+    ✓ [snr/positive] "high signal-to-noise ratio" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ✓ [amplitude/positive] "strong amplitude" → supported
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ? [uncertainty/positive] "uncertain" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+
+  [P5_safe_gem]
+  EIRRS=0.056  Risk=LOW  SGS=1.000  Claims=9
+
+  FULL EXPLANATION TEXT:
+  The AI model suggests a microseismic event has occurred based on the high signal-to-noise ratio and strong high-frequency energy detected, which together with the moderate onset and strong amplitude contrast, may indicate a significant seismic activity. The agreement between Distributed Acoustic Sensing (DAS) coherence and sensor evidence further supports this detection, though the incoherent DAS suggests some variability or complexity in the source mechanism. While these features collectively suggest the presence of a microseismic event, it is important to note that additional verification through cross-referencing with other data sources would be beneficial for confirmation.
+
+  EXTRACTED CLAIMS:
+    ? [uncertainty/positive] "suggests" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ✓ [snr/positive] "high signal-to-noise ratio" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ✓ [amplitude/positive] "strong amplitude" → supported
+    ? [uncertainty/positive] "may indicate" → unavailable
+    ✓ [das_coherence/negative] "incoherent das" → supported
+    ? [uncertainty/positive] "suggests" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+
+────────────────────────────────────────────────────────────────────────────────
+SAMPLE: FORGE_N_0252  (CLEAR NOISE — wrong prediction (high AER risk))
+GT=0  Pred=1  Conf=0.982  WRONG
+────────────────────────────────────────────────────────────────────────────────
+
+SYMBOLIC EVIDENCE:
+  SNR level         : high
+  Amplitude contrast: strong
+  Frequency band    : high
+  High-freq content : strong
+  Onset character   : moderate
+  DAS coherence     : incoherent
+  Event support     : strong
+  Signal ambiguity  : moderate
+  Multimodal        : agreement
+
+  [P1_raw]
+  EIRRS=0.222  Risk=LOW  SGS=1.000  Claims=5
+
+  FULL EXPLANATION TEXT:
+  The AI model likely identified a Microseismic Event based on distinct seismic signal characteristics such as the presence of low-frequency vibrations and transient signals that are typical of microseisms. The high confidence level (0.98) suggests that these signals matched the model's learned patterns associated with microseismic activity, indicating a strong likelihood that the detected event is indeed a microseismic occurrence.
+
+  EXTRACTED CLAIMS:
+    ? [uncertainty/positive] "likely" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ? [uncertainty/positive] "typical of" → unavailable
+    ? [uncertainty/positive] "suggests" → unavailable
+    ? [uncertainty/positive] "associated with" → unavailable
+
+  [P2_grounded]
+  EIRRS=0.278  Risk=LOW  SGS=1.000  Claims=7
+
+  FULL EXPLANATION TEXT:
+  The AI model predicts a microseismic event with high confidence (0.98), indicating that the detected signal is likely genuine and not noise. The strong amplitude contrast and high-frequency energy suggest a clear and distinct signal, while the moderate onset and incoherent DAS coherence indicate a somewhat abrupt but not perfectly clean signal. The strong event support and multimodal agreement further reinforce the validity of this prediction, despite some ambiguity in the signal characteristics.
+
+  EXTRACTED CLAIMS:
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ? [uncertainty/negative] "with high confidence" → unavailable
+    ? [uncertainty/positive] "likely" → unavailable
+    ✓ [amplitude/positive] "strong amplitude" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ✓ [das_coherence/negative] "incoherent das" → supported
+    ✓ [multimodal_agreement/positive] "multimodal agreement" → supported
+
+  [P3_uncertainty]
+  EIRRS=0.222  Risk=LOW  SGS=1.000  Claims=11
+
+  FULL EXPLANATION TEXT:
+  The AI model's prediction of a microseismic event with high confidence (0.98) indicates that the detected signal likely meets several key characteristics associated with such events, including a strong amplitude contrast and high-frequency energy. However, it is important to note that while the overall signal features suggest a potential microseismic event, the incoherent DAS coherence could indicate alternative interpretations or sources of the observed signal, possibly suggesting noise or other geological phenomena.
+
+  EXTRACTED CLAIMS:
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ? [uncertainty/negative] "with high confidence" → unavailable
+    ? [uncertainty/positive] "likely" → unavailable
+    ? [uncertainty/positive] "associated with" → unavailable
+    ✓ [amplitude/positive] "strong amplitude" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ? [uncertainty/positive] "potential" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ✓ [das_coherence/negative] "incoherent das" → supported
+    ? [uncertainty/positive] "could indicate" → unavailable
+    ? [uncertainty/positive] "possibly" → unavailable
+
+  [P4_constrained]
+  EIRRS=0.167  Risk=LOW  SGS=1.000  Claims=8
+
+  FULL EXPLANATION TEXT:
+  The AI model's high confidence (0.98) in predicting a microseismic event is supported by strong signal-to-noise ratio and high-frequency energy, indicating clear and robust seismic activity. The strong amplitude contrast and supportive multimodal agreement further reinforce this prediction. However, the incoherent DAS coherence suggests some uncertainty in the spatial correlation of the signals, which could limit the precision of the location determination.
+
+  EXTRACTED CLAIMS:
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ✓ [snr/positive] "strong signal-to-noise" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ✓ [amplitude/positive] "strong amplitude" → supported
+    ✓ [multimodal_agreement/positive] "multimodal agreement" → supported
+    ✓ [das_coherence/negative] "incoherent das" → supported
+    ? [uncertainty/positive] "suggests" → unavailable
+    ? [uncertainty/positive] "uncertain" → unavailable
+
+  [P5_safe_gem]
+  EIRRS=0.222  Risk=LOW  SGS=1.000  Claims=9
+
+  FULL EXPLANATION TEXT:
+  Based on the AI model's prediction with high confidence (0.98), the signal detected suggests a microseismic event has occurred. The strong amplitude contrast and high signal-to-noise ratio, along with the presence of high-frequency energy, indicate that this event is likely significant. While the DAS coherence appears incoherent, the agreement between sensor evidence supports the detection. However, it's important to note that these findings may indicate a microseismic event but further verification is necessary due to the observed incoherence.
+
+  EXTRACTED CLAIMS:
+    ? [uncertainty/negative] "with high confidence" → unavailable
+    ? [uncertainty/positive] "suggests" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ✓ [amplitude/positive] "strong amplitude" → supported
+    ✓ [snr/positive] "high signal-to-noise ratio" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ? [uncertainty/positive] "likely" → unavailable
+    ? [uncertainty/positive] "may indicate" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+
+────────────────────────────────────────────────────────────────────────────────
+SAMPLE: FORGE_A_0284  (AMBIGUOUS — borderline confidence)
+GT=0  Pred=0  Conf=0.421  CORRECT
+────────────────────────────────────────────────────────────────────────────────
+
+SYMBOLIC EVIDENCE:
+  SNR level         : high
+  Amplitude contrast: strong
+  Frequency band    : high
+  High-freq content : strong
+  Onset character   : moderate
+  DAS coherence     : incoherent
+  Event support     : moderate
+  Signal ambiguity  : moderate
+  Multimodal        : agreement
+
+  [P1_raw]
+  EIRRS=0.389  Risk=MEDIUM  SGS=0.000  Claims=7
+
+  FULL EXPLANATION TEXT:
+  The AI model likely identified the detected signal as noise or a non-event due to its low energy and random fluctuations that do not match the typical patterns of microseismic events. The confidence level of 0.42 suggests that while the model is fairly certain it's noise, there is still a significant degree of uncertainty, possibly indicating subtle features that are difficult for the current model to confidently classify as an event.
+
+  EXTRACTED CLAIMS:
+    ? [uncertainty/positive] "likely" → unavailable
+    ✗ [event_claim/negative] "non-event" → contradicted
+    ✗ [amplitude/negative] "low energy" → contradicted
+    ✗ [event_claim/negative] "microseismic event" → contradicted
+    ? [uncertainty/positive] "suggests" → unavailable
+    ? [uncertainty/positive] "uncertain" → unavailable
+    ? [uncertainty/positive] "possibly" → unavailable
+
+  [P2_grounded]
+  EIRRS=0.333  Risk=MEDIUM  SGS=0.667  Claims=4
+
+  FULL EXPLANATION TEXT:
+  The AI model classified the detected signal as a non-event/noise with a confidence of 0.42, indicating a relatively low level of certainty. The high Signal-to-Noise Ratio (SNR), strong high-frequency energy, and moderate amplitude contrast suggest that the signal is clear and distinct but may still contain noise or artifacts. The incoherent Data Acquisition System (DAS) coherence and moderate event support further contribute to the classification by indicating uncertainties in the signal's origin and reliability.
+
+  EXTRACTED CLAIMS:
+    ✗ [event_claim/negative] "non-event" → contradicted
+    ✓ [snr/positive] "high signal-to-noise ratio" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ? [uncertainty/positive] "uncertain" → unavailable
+
+  [P3_uncertainty]
+  EIRRS=0.333  Risk=MEDIUM  SGS=0.600  Claims=9
+
+  FULL EXPLANATION TEXT:
+  The AI model's prediction of NON-EVENT/NOISE with a confidence level of 0.42 indicates that the signal likely does not represent an event but rather noise; however, this result should be interpreted cautiously as there are several features that may suggest otherwise. The high Signal-to-Noise Ratio (SNR), strong high-frequency energy, and moderate amplitude contrast could potentially indicate the presence of a microseismic event, although they do not definitively rule out noise. Therefore, while the model suggests non-event, further analysis is advisable to confirm this interpretation.
+
+  EXTRACTED CLAIMS:
+    ✗ [event_claim/negative] "non-event" → contradicted
+    ? [uncertainty/positive] "likely" → unavailable
+    ✓ [snr/positive] "high signal-to-noise ratio" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ? [uncertainty/positive] "potential" → unavailable
+    ✓ [event_claim/positive] "microseismic event" → supported
+    ? [uncertainty/positive] "suggests" → unavailable
+    ✗ [event_claim/negative] "non-event" → contradicted
+    ? [uncertainty/positive] "further analysis" → unavailable
+
+  [P4_constrained]
+  EIRRS=0.333  Risk=MEDIUM  SGS=0.667  Claims=9
+
+  FULL EXPLANATION TEXT:
+  The AI model's prediction of "NON-EVENT / NOISE" with a confidence level of 0.42 suggests that while there is some signal present, it does not meet the criteria for an event based on the provided evidence. The high Signal-to-Noise Ratio (SNR) and strong high-frequency energy indicate that the signal quality is good, but factors such as moderate onset, incoherent DAS coherence, and moderate event support suggest variability or uncertainty. However, given the strong amplitude contrast and agreement from multimodal analysis, it's possible that some noise components are still present with distinct characteristics. The moderate confidence level reflects the balance between these supportive and conflicting indicators, highlighting the need for further investigation to confirm whether this signal is indeed non-event/noise or if it warrants closer inspection.
+
+  EXTRACTED CLAIMS:
+    ✗ [event_claim/negative] "non-event" → contradicted
+    ? [uncertainty/positive] "suggests" → unavailable
+    ✓ [snr/positive] "high signal-to-noise ratio" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ✓ [das_coherence/negative] "incoherent das" → supported
+    ? [uncertainty/positive] "uncertain" → unavailable
+    ✓ [amplitude/positive] "strong amplitude" → supported
+    ? [uncertainty/positive] "further investigation" → unavailable
+    ✗ [event_claim/negative] "non-event" → contradicted
+
+  [P5_safe_gem]
+  EIRRS=0.333  Risk=MEDIUM  SGS=0.500  Claims=9
+
+  FULL EXPLANATION TEXT:
+  Based on the AI model's prediction, which suggests a NON-EVENT/NOISE classification with a confidence level of 0.42, the signal characteristics appear to include high Signal-to-Noise Ratio (SNR) and strong high-frequency energy, which may indicate that the detected activity is indeed noise or non-event related. The moderate onset and amplitude contrast, along with incoherent DAS coherence and moderate event support, suggest a cautious interpretation of the data. While the agreement between DAS and sensor evidence supports this classification, it should be noted that these characteristics are not definitive and may indicate other possibilities as well.
+
+  EXTRACTED CLAIMS:
+    ? [uncertainty/positive] "suggests" → unavailable
+    ✗ [event_claim/negative] "non-event" → contradicted
+    ✗ [event_claim/negative] "noise classification" → contradicted
+    ✓ [snr/positive] "high signal-to-noise ratio" → supported
+    ✓ [frequency/positive] "high-frequency energy" → supported
+    ? [uncertainty/positive] "may indicate" → unavailable
+    ✗ [event_claim/negative] "non-event" → contradicted
+    ✓ [das_coherence/negative] "incoherent das" → supported
+    ? [uncertainty/positive] "may indicate" → unavailable
